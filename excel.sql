@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 16, 2021 at 01:54 PM
+-- Generation Time: Apr 16, 2021 at 03:43 PM
 -- Server version: 8.0.20
 -- PHP Version: 7.2.19
 
@@ -21,24 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `excel`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `banner`
---
-
-CREATE TABLE `banner` (
-  `banner_id` int NOT NULL,
-  `banner_link` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `banner`
---
-
-INSERT INTO `banner` (`banner_id`, `banner_link`) VALUES
-(1, 'https://www.gettruck.ca/request-a-quote/');
 
 -- --------------------------------------------------------
 
@@ -620,112 +602,9 @@ INSERT INTO `gtc_model` (`s_no`, `model_name`, `model_status`) VALUES
 (220, '5800', 1),
 (221, '6900', 1);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `myadmin`
---
-
-CREATE TABLE `myadmin` (
-  `PersonID` int NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `myadmin`
---
-
-INSERT INTO `myadmin` (`PersonID`, `name`, `email`, `password`, `token`) VALUES
-(3, '', 'tech.cental17@gmail.com', 'fcea920f7412b5da7be0cf42b8c93759', ''),
-(5, '', 'info@gettruck.ca', 'fcea920f7412b5da7be0cf42b8c93759', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `myads`
---
-
-CREATE TABLE `myads` (
-  `AdsID` int NOT NULL,
-  `sellerId` int NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `brand_body_model_sno` bigint NOT NULL,
-  `image` mediumtext NOT NULL,
-  `message` varchar(1500) NOT NULL,
-  `price` varchar(255) NOT NULL,
-  `kilometers` varchar(255) NOT NULL,
-  `engine` varchar(255) NOT NULL,
-  `car_type` varchar(255) NOT NULL,
-  `model_year` varchar(255) NOT NULL,
-  `transmission_type` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `myseller`
---
-
-CREATE TABLE `myseller` (
-  `PersonID` int NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `token` varchar(255) DEFAULT '0',
-  `address` varchar(255) DEFAULT NULL,
-  `website` varchar(255) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `type` int NOT NULL DEFAULT '0',
-  `membershipTime` varchar(255) DEFAULT NULL,
-  `trans_id` varchar(255) DEFAULT NULL,
-  `cost` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `myseller`
---
-
-INSERT INTO `myseller` (`PersonID`, `name`, `phone`, `email`, `password`, `token`, `address`, `website`, `image`, `type`, `membershipTime`, `trans_id`, `cost`) VALUES
-(17, 'Get Truck', '1 888-894-5678', 'info@gettruck.ca', 'fcea920f7412b5da7be0cf42b8c93759', '0', '180 Wilkinson Rd #32 Brampton, ON', 'gettruck.ca', 'e6c146ba55.jpg', 0, NULL, '', ''),
-(19, 'Tech', '6477049264', 'tech.cental17@gmail.com', '3e0c9e73aed9e0e879c7a8b2f3c9a642', '0', NULL, NULL, NULL, 0, NULL, NULL, NULL),
-(22, 'David', '4165152342', 'directequipments@gmail.com', '20b8e637a7b231c9b82d343675d09a7c', '0', NULL, NULL, NULL, 0, NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_category`
---
-
-CREATE TABLE `tbl_category` (
-  `category_id` int NOT NULL,
-  `category_name` varchar(255) NOT NULL,
-  `type` int NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_sub_category`
---
-
-CREATE TABLE `tbl_sub_category` (
-  `sub_cat_id` int NOT NULL,
-  `sub_category_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `banner`
---
-ALTER TABLE `banner`
-  ADD PRIMARY KEY (`banner_id`);
 
 --
 -- Indexes for table `gtc_body`
@@ -758,45 +637,8 @@ ALTER TABLE `gtc_model`
   ADD UNIQUE KEY `model_name` (`model_name`);
 
 --
--- Indexes for table `myadmin`
---
-ALTER TABLE `myadmin`
-  ADD PRIMARY KEY (`PersonID`);
-
---
--- Indexes for table `myads`
---
-ALTER TABLE `myads`
-  ADD PRIMARY KEY (`AdsID`),
-  ADD KEY `brand_body_model_sno` (`brand_body_model_sno`);
-
---
--- Indexes for table `myseller`
---
-ALTER TABLE `myseller`
-  ADD PRIMARY KEY (`PersonID`);
-
---
--- Indexes for table `tbl_category`
---
-ALTER TABLE `tbl_category`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Indexes for table `tbl_sub_category`
---
-ALTER TABLE `tbl_sub_category`
-  ADD PRIMARY KEY (`sub_cat_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `banner`
---
-ALTER TABLE `banner`
-  MODIFY `banner_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `gtc_body`
@@ -823,36 +665,6 @@ ALTER TABLE `gtc_model`
   MODIFY `s_no` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
--- AUTO_INCREMENT for table `myadmin`
---
-ALTER TABLE `myadmin`
-  MODIFY `PersonID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `myads`
---
-ALTER TABLE `myads`
-  MODIFY `AdsID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `myseller`
---
-ALTER TABLE `myseller`
-  MODIFY `PersonID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
---
--- AUTO_INCREMENT for table `tbl_category`
---
-ALTER TABLE `tbl_category`
-  MODIFY `category_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `tbl_sub_category`
---
-ALTER TABLE `tbl_sub_category`
-  MODIFY `sub_cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- Constraints for dumped tables
 --
 
@@ -863,12 +675,6 @@ ALTER TABLE `gtc_brand_body_model`
   ADD CONSTRAINT `gtc_brand_body_model_ibfk_1` FOREIGN KEY (`body_sno`) REFERENCES `gtc_body` (`s_no`),
   ADD CONSTRAINT `gtc_brand_body_model_ibfk_2` FOREIGN KEY (`brand_sno`) REFERENCES `gtc_brand` (`s_no`),
   ADD CONSTRAINT `gtc_brand_body_model_ibfk_3` FOREIGN KEY (`model_sno`) REFERENCES `gtc_model` (`s_no`);
-
---
--- Constraints for table `myads`
---
-ALTER TABLE `myads`
-  ADD CONSTRAINT `myads_ibfk_1` FOREIGN KEY (`brand_body_model_sno`) REFERENCES `gtc_brand_body_model` (`s_no`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
