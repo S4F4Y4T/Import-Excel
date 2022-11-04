@@ -1,6 +1,6 @@
 <?php
   define("host","localhost");
   define("dbname","excel");
-  define("username","root");
-  define("password","");
+  define("username","safayat");
+  define("password","safayat69");
  ?>

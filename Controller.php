@@ -1,10 +1,11 @@
 <?php
 
-//import.php
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 
 include 'vendor/autoload.php';
-
-$connect = new PDO("mysql:host=localhost;dbname=excel", "root", "");
+include 'config.php';
+$connect = new PDO("mysql:host=".host.";dbname=".dbname, username, password);
 
 if($_FILES["import_excel"]["name"] != '')
 {
@@ -15,9 +16,10 @@ if($_FILES["import_excel"]["name"] != '')
  if(in_array($file_extension, $allowed_extension))
  {
   $file_name = time() . '.' . $file_extension;
-  move_uploaded_file($_FILES['import_excel']['tmp_name'], $file_name);
-
-  //$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file_name);
+  if(move_uploaded_file($_FILES['import_excel']['tmp_name'], $file_name)){
+  
+  
+  	//$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file_name);
 
   $file_type = \PhpOffice\PhpSpreadsheet\IOFactory::identify($file_name);
   $reader    = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($file_type);
@@ -209,6 +211,13 @@ if($_FILES["import_excel"]["name"] != '')
     }
 
   }
+  
+  }
+else
+ {
+  $message = '<div class="alert alert-danger">Not Uploaded(Check folder permission)</div>';
+ }
+  
 
   }
  else
