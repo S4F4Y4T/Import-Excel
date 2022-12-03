@@ -72,7 +72,7 @@ Before installing the script you need some external dependencies on your machine
    ```sh
    git clone https://github.com/S4F4Y4T/PHP-Excel.git
    ```
-2. Changin folder and files permissions 
+2. Change folder and files permissions 
    ```sh
    sudo find "Your project directory" -type f -exec chmod 644 {} \;
    sudo find "Your project directory" -type d -exec chmod 755 {} \;
